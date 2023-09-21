@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify
 import requests
 
 app = Flask(__name__)
-API_KEY = "7d373254b9mshb0a0442af76f1f3p123666jsn1ab2bd919033"
+API_KEY = "8e31216993mshc28306142e70ca0p185a0cjsnea0bfaa02bbf"
 
 def words_to_number(word_string):
     
@@ -191,10 +191,113 @@ headers = {
     "X-RapidAPI-Host": "irctc1.p.rapidapi.com",
 }
 
+
+
+
+
+
+
+
+
+
+@app.route('/get_pnr_status', methods=['GET'])
+def get_pnr_status():
+    # Get the PNR number from the request parameters
+    pnr_number = request.args.get('pnrNumber')
+    lang=request.args.get('toLang')
+    # Check if the PNR number is provided
+    if not pnr_number:
+        return jsonify({'error': 'PNR number is required'}), 400
+
+    # Define the headers for the API request
+    headers = {
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': 'irctc1.p.rapidapi.com'
+    }
+
+    # Make the API request
+    url = 'https://irctc1.p.rapidapi.com/api/v3/getPNRStatus'
+    params = {'pnrNumber': pnr_number}
+
+    try:
+        response = requests.get(url, headers=headers, params=params)
+        response_data = response.json()
+        return jsonify(response_data), response.status_code
+
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Error connecting to the API'}), 500
+
+
+
+@app.route('/get_train_schedule', methods=['GET'])
+def get_train_schedule():
+    # Get the train number from the request parameters
+    train_no = request.args.get('trainNo')
+    
+    # Check if the train number is provided
+    if not train_no:
+        return jsonify({'error': 'Train number is required'}), 400
+
+    # Define the headers for the API request
+    headers = {
+        'X-RapidAPI-Key': API_KEY,
+        'X-RapidAPI-Host': 'irctc1.p.rapidapi.com'
+    }
+
+    # Make the API request
+    url = 'https://irctc1.p.rapidapi.com/api/v1/getTrainSchedule'
+    params = {'trainNo': train_no}
+
+    try:
+        response = requests.get(url, headers=headers, params=params)
+        response_data = response.json()
+        return jsonify(response_data), response.status_code
+
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': 'Error connecting to the API'}), 500
+
+@app.route('queryDetails', methods=['GET'])
+def get_all_Details():
+    details=request.args.get('query')
+    lang=request.args.get('toLang')
+    
+
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @app.route("/voiceData",methods=["GET"])
 def get_voice_data():
     print("dev")
     vData=request.args.get("vData")
+    lang=request.args.get("toLang")
+    print(lang)
     print(vData)
     translator=Translator()
     transVdata=translator.translate(vData,dest="en").text
@@ -208,8 +311,16 @@ def get_voice_data():
     print("Destination:", des_point[0])
     print("Journey Date:", journey_date)
     print("Duration Time: ", duration)
+    
+    dictionary={
+        "start":translator.translate(s_point[0],src="en",dest=lang).text,
+        "dest": translator.translate(des_point[0],src="en", dest=lang).text,
+        "date":journey_date
+    }
 
-    return jsonify(transVdata)
+    print(dictionary)
+
+    return jsonify(dictionary)
 
 
 @app.route('/getLiveTrainStatus', methods=['GET'])
@@ -229,7 +340,7 @@ def get_live_station():
         }
 
         response = requests.get(url, params=params, headers=headers)
-
+        print(response.status_code)
         if response.status_code == 200:
             data = response.json()
            

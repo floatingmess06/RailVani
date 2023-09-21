@@ -5,7 +5,8 @@ import { Route, Routes } from "react-router-dom";
 
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
-
+import Choose from './pages/Choose';
+import Chatbot from './pages/Chatbot';
 import TrainDetails from './pages/TrainDetails';
 import NavBar from './components/NavBar';
 
@@ -40,6 +41,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/searchForTrains" element={<SearchForTrain />} />
         <Route path="/trainDetails/:id" element={<TrainDetails/>}/>
+        <Route path="/choose" element={<Choose></Choose>}></Route>
+        <Route path="/chatbot" element={<Chatbot></Chatbot>}></Route>
      
       </Routes>
     </>

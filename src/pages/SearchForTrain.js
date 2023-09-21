@@ -21,6 +21,9 @@ const SearchForTrain = () => {
     const [destinationStation, setDestinationStation] = useState("");
     const [journeyDate, setJourneyDate] = useState("");
     const [allTrains, setAllTrains] = useState([]);
+   
+    const [voicejourneyDate, voiceSetJourneyDate] = useState("");
+
     
     //console.log(sourceStation)
     //console.log(destinationStation)
@@ -40,6 +43,10 @@ const SearchForTrain = () => {
           setSourceCityStations(response.data)
           setIsSourceCityActive(true);
        };
+        
+
+
+
        const handleSearchDestinationStations=async()=>{
           const response = await axios.get(
             `/search_station?query=${destinationCity}&toLang=${state}`
@@ -48,6 +55,8 @@ const SearchForTrain = () => {
           setDestinationCityStations(response.data)
           setIsDestinationCityActive(true);
        };
+     
+       
        const searchAllTrains=async()=>{
         const response = axios
           .get(
@@ -64,60 +73,13 @@ const SearchForTrain = () => {
        
        //console.log(allTrains)
        
-      function startListening() {
-        console.log("Hello World!");
-        if (
-          "SpeechRecognition" in window ||
-          "webkitSpeechRecognition" in window
-        ) {
-          const recognition = new (window.SpeechRecognition ||
-            window.webkitSpeechRecognition)();
-
-          recognition.lang = `${state}-IN`;
-          recognition.interimResults = false;
-
-          recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            console.log(`You said: ${transcript}`);
-            
-            //console.log(voiceData);
-            const response=axios.get(`/voiceData?vData=${transcript}`);
-            
-
-            
-            const lang = franc(transcript);
-            const messages = {
-              en: "You said: ",
-              hi: "आपने कहा: ",
-             
-            };
-
-            console.log(messages[lang] + transcript);
-          };
-
-          recognition.onerror = (event) => {
-            console.error("Speech recognition error:", event.error);
-          };
-
-          recognition.start();
-
-          
-          setTimeout(() => {
-            recognition.stop();
-          }, 10000); 
-        } else {
-          alert("Speech recognition is not supported in this browser.");
-        }
-      }
+      
 
      
 
   return (
     <div>
-      <div>
-
-        <button onClick={startListening}>Voice</button>
-      </div>
+      
 
 
 

@@ -23,13 +23,12 @@ const Home = () => {
    { name: "ne", script: "नेपाली" },
    { name: "kok", script: "कोंकणी" },
    { name: "sd", script: "سنڌي" },
-   { name: "mni", script: "ꯃꯤꯇꯩ ꯂꯣꯟ" },
    { name: "doi", script: "ڈوگری" },
    { name: "brx", script: "बर’" },
  ];
  const navigate=useNavigate();
  const onchangePage=(e)=>{
-   navigate(`/searchForTrains/?lang=${e.target.value}`, { state: e.target.value});
+   navigate(`/choose/?lang=${e.target.value}`, { state: e.target.value});
  };
 
 
