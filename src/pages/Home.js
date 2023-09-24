@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import CustomButton from '../components/CustomButton';
+import Entry from './Entry';
 import { useNavigate } from 'react-router-dom';
 const Home = () => {
  
@@ -28,12 +29,28 @@ const Home = () => {
  ];
  const navigate=useNavigate();
  const onchangePage=(e)=>{
+  console.log(e.target.value)
    navigate(`/choose/?lang=${e.target.value}`, { state: e.target.value});
  };
 
+ const [showIntro, setShowIntro] = useState(true);
+
+ useEffect(() => {
+   // Set a timer to switch to the main component after 2 seconds
+   const timer = setTimeout(() => {
+     setShowIntro(false);
+   },1500);
+
+   // Clear the timer when the component unmounts to avoid memory leaks
+   return () => {
+     clearTimeout(timer);
+   };
+ }, []);
 
 
   return (
+    <div  style={{width:'1300px', margin: 'auto' }}> 
+     {showIntro ? <Entry/> :
     <div>
       
       <div className="grid grid-cols-3 gap-4 flex-wrap justify-center">
@@ -41,7 +58,9 @@ const Home = () => {
           <CustomButton title={lang.script} val={lang.name} handleClick={onchangePage}></CustomButton>
         ))}
       </div>
+    </div>}
     </div>
+     
   );
 }
 

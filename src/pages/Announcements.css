@@ -1,0 +1,54 @@
+#head {
+    margin: auto;
+    width: fit-content;
+    font-size: 1.7rem;
+    color: snow;
+
+}
+
+#divFirst {
+    background-color: rgb(68, 140, 227);
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    width: 1150px;
+}
+
+#divSecond {
+
+    /* margin: auto; */
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#select1 {
+    padding: 5px;
+    color: black;
+
+}
+
+#div3 {
+    width: fit-content;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#Output {
+    margin: auto;
+    width: fit-content;
+    margin-top: 100px;
+    display: flex;
+
+}
+
+#taglabel{
+    font: 1.3rem;
+    font-weight: bold;
+    border: 2px solid black;
+    display: inline;
+    border-radius: 25px;
+    padding: 10px;
+    margin-right: 15px;
+}

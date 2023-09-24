@@ -1,11 +1,12 @@
 import React from 'react'
-import './Card.css'
+// import './Card.css'
+import './choiceSecpg.css'
 const Card = ({title,handleCard}) => {
   return (
-    <div>
+    <div style={{margin:'20px'}}>
       
 <div className="container noselect" onClick={handleCard}>
-  <div className="canvas">
+  {/* <div className="canvas">
     <div className="tracker tr-1"></div>
     <div className="tracker tr-2"></div>
     <div className="tracker tr-3"></div>
@@ -37,7 +38,15 @@ const Card = ({title,handleCard}) => {
      
       
     </div>
+  </div> */
+  }
+  <div class="card">
+  <div class="card-details">
+    <p class="text-title">{title}</p>
+    <p class="text-body">Here are the details of the card</p>
   </div>
+  <button class="card-button">Proceed</button>
+</div>
 </div>
 
 

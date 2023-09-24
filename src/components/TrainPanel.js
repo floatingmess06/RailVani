@@ -1,5 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import './fourth_listtrainsrch.css'
+
 const TrainPanel = ({alltrains,lang}) => {
     //console.log("sdf");
     //console.log(alltrains)
@@ -13,12 +15,13 @@ const TrainPanel = ({alltrains,lang}) => {
 
 
   return (
-    <div>
-      <h2>Train List</h2>
-      <ul>
+    <div >
+      <h2 >Train List</h2>
+      <ul className='list'>
         {alltrains &&
           alltrains.map((train) => (
             <li key={train.train_number} className="mt-10 bg-[#b8b8c0]" onClick={()=>handleTrainDetail(train,lang)}>
+              <span class="circle"></span>
               <strong>Train Name:</strong> {train.train_name}
               <br />
               <strong>Train Number:</strong> {train.train_number}

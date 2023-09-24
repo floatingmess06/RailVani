@@ -9,6 +9,7 @@ import Choose from './pages/Choose';
 import Chatbot from './pages/Chatbot';
 import TrainDetails from './pages/TrainDetails';
 import NavBar from './components/NavBar';
+import Announcement from './pages/Announcement';
 
 import SearchForTrain from './pages/SearchForTrain';
 {/*
@@ -43,7 +44,7 @@ function App() {
         <Route path="/trainDetails/:id" element={<TrainDetails/>}/>
         <Route path="/choose" element={<Choose></Choose>}></Route>
         <Route path="/chatbot" element={<Chatbot></Chatbot>}></Route>
-     
+        <Route path="/announcement" element={<Announcement/>}></Route>
       </Routes>
     </>
   );
