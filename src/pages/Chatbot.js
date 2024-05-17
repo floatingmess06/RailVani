@@ -430,17 +430,18 @@ import { franc } from 'franc-min';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import CustomButton from '../components/CustomButton';
-import ShowBothStations from '../chatbotcomponents/ShowBothStations';
-import ShowSingleStation from '../chatbotcomponents/ShowSingleStation';
-import WarningFirst from '../chatbotcomponents/WarningFirst';
-import TrainsBothCodes from '../chatbotcomponents/TrainsBothCodes';
-import TrainStatus from '../chatbotcomponents/TrainStatus';
-import TrainSchedule from '../chatbotcomponents/TrainSchedule';
-import PnrStatus from '../chatbotcomponents/PnrStatus';
+// import CustomButton from '../components/CustomButton';
+// import ShowBothStations from '../chatbotcomponents/ShowBothStations';
+// import ShowSingleStation from '../chatbotcomponents/ShowSingleStation';
+// import WarningFirst from '../chatbotcomponents/WarningFirst';
+// import TrainsBothCodes from '../chatbotcomponents/TrainsBothCodes';
+// import TrainStatus from '../chatbotcomponents/TrainStatus';
+// import TrainSchedule from '../chatbotcomponents/TrainSchedule';
+// import PnrStatus from '../chatbotcomponents/PnrStatus';
 import '../components/chatbot.css';
-import TrainDuration from '../chatbotcomponents/TrainDuration';
+// import TrainDuration from '../chatbotcomponents/TrainDuration';
 import Intro from './Intro'
+import Chatbotcontent from './Chatbotcontent';
 
 const Chatbot = () => {
   const { state } = useLocation();
@@ -551,66 +552,66 @@ const Chatbot = () => {
     }
   };
 
-  const renderDivs = () => {
-    const divs = [];
+  // const renderDivs = () => {
+  //   const divs = [];
 
-    messages.map((message) => {
-      let divn;
-      var cname='chatbot-text';
-      console.log(message.flag);
-      switch (message.flag) {
-        case 0:
-          divn = <div className={cname}>{message.text}</div>;
-          break;
-        case 1:
-        case 6:
-        case 17:
-          divn = <ShowBothStations className={cname} result={result} />;
-          break;
-        case 16:
-          divn = <TrainDuration className={cname} result={result} />;
-          break;
-        case 2:
-        case 7:
-        case 8:
-        case 18:
-        case 19:
-          divn = <ShowSingleStation className={cname} result={result} />;
-          break;
-        case 3:
-        case 5:
-        case 11:
-        case 13:
-        case 15:
-        case 20:
-        case 21:
-          divn = <WarningFirst className={cname} result={result} />;
-          break;
-        case 4:
-          divn = <TrainsBothCodes className={cname} result={result} />;
-          break;
-        case 9:
-          divn = <WarningFirst className={cname} result={result} />;
-          break;
-        case 10:
-          divn = <TrainStatus className={cname} result={result} />;
-          break;
-        case 12:
-          divn = <TrainSchedule className={cname} result={result} />;
-          break;
-        case 14:
-          divn = <PnrStatus className={cname} result={result} />;
-          break;
-        default:
-          divn = "I'm not sure how to respond to that.";
-      }
+  //   messages.map((message) => {
+  //     let divn;
+  //     var cname='chatbot-text';
+  //     console.log(message.flag);
+  //     switch (message.flag) {
+  //       case 0:
+  //         divn = <div className={cname}>{message.text}</div>;
+  //         break;
+  //       case 1:
+  //       case 6:
+  //       case 17:
+  //         divn = <ShowBothStations className={cname} result={result} />;
+  //         break;
+  //       case 16:
+  //         divn = <TrainDuration className={cname} result={result} />;
+  //         break;
+  //       case 2:
+  //       case 7:
+  //       case 8:
+  //       case 18:
+  //       case 19:
+  //         divn = <ShowSingleStation className={cname} result={result} />;
+  //         break;
+  //       case 3:
+  //       case 5:
+  //       case 11:
+  //       case 13:
+  //       case 15:
+  //       case 20:
+  //       case 21:
+  //         divn = <WarningFirst className={cname} result={result} />;
+  //         break;
+  //       case 4:
+  //         divn = <TrainsBothCodes className={cname} result={result} />;
+  //         break;
+  //       case 9:
+  //         divn = <WarningFirst className={cname} result={result} />;
+  //         break;
+  //       case 10:
+  //         divn = <TrainStatus className={cname} result={result} />;
+  //         break;
+  //       case 12:
+  //         divn = <TrainSchedule className={cname} result={result} />;
+  //         break;
+  //       case 14:
+  //         divn = <PnrStatus className={cname} result={result} />;
+  //         break;
+  //       default:
+  //         divn = "I'm not sure how to respond to that.";
+  //     }
 
-      divs.push(divn);
-    });
+  //     divs.push(divn);
+  //   });
     
-    console.log("lenght "+ divs.length)
-    return divs[divs.length -1];
-  };
+  //   console.log("lenght "+ divs.length)
+  //   return divs[divs.length -1];
+  // };
 
 
   // {result.flag === 16 && <TrainDuration result={result}></TrainDuration>}
@@ -620,51 +621,157 @@ const Chatbot = () => {
   // {result.flag === 20 && <WarningFirst result={result} />}
   // {result.flag === 21 && <WarningFirst result={result} />}
 
-  return (
-    <>
-    {showIntro ? <Intro/> :(
-    <div className="chatbot-container">
-      <div id="header">
-        <h1>Chatbot</h1>
-      </div>
-      <div id="chatbot">
-        <div id="conversation">
-          <div className="chatbot-message">
-            <p className="chatbot-text">Hi! 👋 it's great to see you!</p>
+  // return (
+  //   <>
+  //   {showIntro ? <Intro/> :(
+  //   <div className="chatbot-container">
+  //     <div id="header">
+  //       <h1>Chatbot</h1>
+  //     </div>
+  //     <div id="chatbot">
+  //       <div id="conversation">
+  //         <div className="chatbot-message">
+  //           <p className="chatbot-text">Hi! 👋 it's great to see you!</p>
             
-          </div>
-          <div>
-          <p className="chatbot-text" style={{marginTop:'10px'}}>{renderDivs()}</p>
-          </div>
+  //         </div>
+  //         <div>
+  //         <p className="chatbot-text" style={{marginTop:'10px'}}>{
+  //           {
+  //             {messages.map((message)=>{
+  //               return (
+  //                 let divn;
+  //     var cname='chatbot-text';
+  //     console.log(message.flag);
+  //     switch (message.flag) {
+  //       case 0:
+  //         divn = <div className={cname}>{message.text}</div>;
+  //         break;
+  //       case 1:
+  //       case 6:
+  //       case 17:
+  //         divn = <ShowBothStations className={cname} result={result} />;
+  //         break;
+  //       case 16:
+  //         divn = <TrainDuration className={cname} result={result} />;
+  //         break;
+  //       case 2:
+  //       case 7:
+  //       case 8:
+  //       case 18:
+  //       case 19:
+  //         divn = <ShowSingleStation className={cname} result={result} />;
+  //         break;
+  //       case 3:
+  //       case 5:
+  //       case 11:
+  //       case 13:
+  //       case 15:
+  //       case 20:
+  //       case 21:
+  //         divn = <WarningFirst className={cname} result={result} />;
+  //         break;
+  //       case 4:
+  //         divn = <TrainsBothCodes className={cname} result={result} />;
+  //         break;
+  //       case 9:
+  //         divn = <WarningFirst className={cname} result={result} />;
+  //         break;
+  //       case 10:
+  //         divn = <TrainStatus className={cname} result={result} />;
+  //         break;
+  //       case 12:
+  //         divn = <TrainSchedule className={cname} result={result} />;
+  //         break;
+  //       case 14:
+  //         divn = <PnrStatus className={cname} result={result} />;
+  //         break;
+  //       default:
+  //         divn = "I'm not sure how to respond to that.";
+  //     }
+  //     return divn;
+  //     );
+  //             })}
+  //           }
+  //         }</p>
+  //         </div>
             
           
-        </div>
-        <div id="input-form">
-          <div className="message-container">
-            <div className="relative mb-3" data-te-input-wrapper-init>
+  //       </div>
+  //       <div id="input-form">
+  //         <div className="message-container">
+  //           <div className="relative mb-3" data-te-input-wrapper-init>
             
               
-              <input
-                id="input-field"
-                type="text"
-                placeholder="Type your message here"
-                onChange={(e) => setText(e.target.value)}
-              />
-              <button id="submit-button" type="submit" onClick={getAllqueryDetails}>
-                Submit
-              </button>
+  //             <input
+  //               id="input-field"
+  //               type="text"
+  //               placeholder="Type your message here"
+  //               onChange={(e) => setText(e.target.value)}
+  //             />
+  //             <button id="submit-button" type="submit" onClick={getAllqueryDetails}>
+  //               Submit
+  //             </button>
+  //             <div>
+  //               <button onClick={startListening}>Voice</button>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  //   )}
+
+  //   </>
+  // );
+
+  return (
+    <>
+      {showIntro ? (
+        <Intro />
+      ) : (
+        <div className="chatbot-container">
+          <div id="header">
+            <h1>Chatbot</h1>
+          </div>
+          <div id="chatbot">
+            <div id="conversation">
+              <div className="chatbot-message">
+                <p className="chatbot-text">Hi! 👋 It's great to see you!</p>
+              </div>
               <div>
-                <button onClick={startListening}>Voice</button>
+                <br></br>
+                {/* <p className="chatbot-text" style={{ marginTop: '10px' }}> */}
+                  {messages.map((message) => {
+                    {/* message.result={result}; */}
+                    return (<Chatbotcontent message={message} result={result}/>);
+                  })}
+                
+              </div>
+            </div>
+            <div id="input-form">
+              <div className="message-container">
+                <div className="relative mb-3" data-te-input-wrapper-init>
+                  <input
+                    id="input-field"
+                    type="text"
+                    placeholder="Type your message here"
+                    onChange={(e) => setText(e.target.value)}
+                  />
+                  <button id="submit-button" type="submit" onClick={getAllqueryDetails}>
+                    Submit
+                  </button>
+                  <div>
+                    <button onClick={startListening}>Voice</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    )}
-
+      )}
     </>
   );
+  
 };
 
 export default Chatbot;

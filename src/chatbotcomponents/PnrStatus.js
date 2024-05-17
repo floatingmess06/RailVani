@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PnrStatus = ({result}) => {
+const PnrStatus = (result) => {
     console.log(result.pnrNum)
     return (
       <div>

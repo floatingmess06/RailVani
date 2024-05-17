@@ -1,40 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import chatgptPic from "./chatbot2.png";
-import './Intro.css'; 
+import train2pic from './Entry.gif';
+import './Intro.css';
 
-function Intro() {
-  const [showMainComponent, setShowMainComponent] = useState(false);
+function Entry() {
+  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowMainComponent(true);
-    }, 1000);
+      setShowIntro(false);
+    }, 5000); // Change the timeout duration as needed (in milliseconds)
 
     return () => clearTimeout(timer);
   }, []);
 
+  const introStyle = {
+    fontFamily: 'Croissant One, sans-serif', // Apply "Croissant One" font
+  };
+
   return (
-    <div className={`intro-container ${showMainComponent ? 'fade-out' : 'fade-in'}`}>
-      {showMainComponent ? (
-        /* Your main component here */
-        <div className="main-content">
-          {/* <h1>Welcome to Chatbot</h1>
-          <p>Ask your query</p> */}
-        </div>
-      ) : (
-        /* Intro content with image on the right */
-        <div className="intro-content">
-          <div className="intro-text">
-            <h1 className='glow'>Welcome to Chatbot</h1>
-            <p>Hello there! If you have any questions, I'm here to help you.</p>
+    <div className={`intro-container2 ${showIntro ? 'fade-in' : 'fade-out'}`}>
+      {showIntro && (
+        <>
+          <div className="intro-content2">
+            <div className="image-container2">
+              <img src={train2pic} alt="Intro Image" style={{ width: '1000px', height: '1000px' }} />
+            </div>
+            <div className="intro-text2" style={introStyle}>
+              <h1 className='glow2' style={{ fontSize: '120px', fontFamily: 'fantasy' }}>Rail Vani</h1>
+              <div className="footer">
+                <p style={{ color: 'white', fontSize: '70px' }}>रेल वाणी</p>
+              </div>
+            </div>
           </div>
-          <div className="image-container">
-            <img src={chatgptPic} alt="Intro Image" />
+          <div style={{ fontSize: '1.2rem', position: 'absolute', bottom: '0', right: '10px', textAlign: 'right' }}>
+            Created by: BinaryBrains
           </div>
-        </div>
+        </>
       )}
     </div>
   );
 }
 
-export default Intro;
+export default Entry;
